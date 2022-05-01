@@ -1,14 +1,23 @@
-import adapter from '@sveltejs/adapter-auto';
+//import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
+import { mdsvex } from 'mdsvex'
+import adapter from '@sveltejs/adapter-static'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
-	// for more information about preprocessors
-	preprocess: preprocess(),
+	
+	preprocess:[ preprocess(),mdsvex({
+		extensions: ['.md'],
+		layout: {
+		  blog: 'src/routes/blog/_post.svelte'
+		}
+	  })
+	],
+	
+	extensions: ['.svelte', '.md'],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter() // https://github.com/sveltejs/kit/tree/master/packages/adapter-static
 	}
 };
 
