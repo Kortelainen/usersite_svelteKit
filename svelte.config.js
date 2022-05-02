@@ -6,7 +6,7 @@ import adapter from '@sveltejs/adapter-static'
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	
-	preprocess:[ preprocess(),mdsvex({
+	preprocess:[ preprocess(), mdsvex({
 		extensions: ['.md'],
 		layout: {
 		  blog: 'src/routes/blog/_post.svelte'
@@ -17,7 +17,19 @@ const config = {
 	extensions: ['.svelte', '.md'],
 
 	kit: {
-		adapter: adapter() // https://github.com/sveltejs/kit/tree/master/packages/adapter-static
+
+		prerender: {
+			entries: []
+		},
+		serviceWorker: {
+			register: false,
+		  },
+			paths: {
+			//base: "/kortelainen.github.io",
+			},
+		adapter: adapter({
+			fallback: 'index.html'
+		  }) // https://github.com/sveltejs/kit/tree/master/packages/adapter-static
 	}
 };
 

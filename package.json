@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/Kortelainen/Kortelainen.github.io",
   "name": "usersite-sveltekit",
   "version": "0.0.1",
   "scripts": {
@@ -7,6 +8,7 @@
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
     "prepare": "svelte-kit sync",
+    "deploy": "gh-pages -a -d build -t true -b main -r https://github.com/Kortelainen/Kortelainen.github.io",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
@@ -31,5 +33,8 @@
     "tslib": "^2.3.1",
     "typescript": "~4.6.2"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
 }
